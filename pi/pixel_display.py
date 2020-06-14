@@ -31,6 +31,6 @@ class PixelDisplay(BaseDisplay):
         for m in cycle(self._animation_frames):
             pixel_array = self._convert_to_pixel_array(m)
             for i in enumerate(self.pixels):
-                self.pixels[i] = (i, *pixel_array[i])
+                self.pixels[i] = tuple(pixel_array[i])
             self.pixels.show()
             time.sleep(1)
