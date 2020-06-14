@@ -35,7 +35,6 @@ class BaseDisplay(object):
             mat = cv2.imread(filename)
         mat = cv2.resize(mat, (self.radius*2, self.radius*2), cv2.INTER_AREA)
         mat = cv2.bitwise_and(mat, mat, mask=self._circle_mask)
-        # mat = cv2.resize(mat, (self._display_size, self._display_size), cv2.INTER_NEAREST)
         self._animation_frames.append(mat)
 
     def display(self):

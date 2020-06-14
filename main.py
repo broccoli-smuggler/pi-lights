@@ -4,8 +4,9 @@ from display import OpenCVDisplay
 from pi.pixel_display import PixelDisplay
 
 d = PixelDisplay(8)
+# d = OpenCVDisplay(8)
 
-# d.add_image("a.jpg")
+d.add_image("t.png")
 # d.add_image("wave.jpg")
-d.add_images(["1.png", "2.png", "3.png", "4.png", "3.png", "2.png"])
+# d.add_images(["1.png", "2.png", "3.png", "4.png", "3.png", "2.png"])
 d.display()
