@@ -46,14 +46,20 @@ if platform.system() != 'Darwin':
 
             # The wiring of the light switch means each row is reversed
             lengths = self.get_row_lengths()
-
-            start = lengths[0]
-            for end_row in lengths[1:]:
+            print(lengths)
+            start = 0
+            odd = False
+            for end_row in lengths:
                 end_row += start
-                print(start, end_row)
-                mat[start:end_row] = np.flip(mat[start:end_row, :])
+                if odd:
+                    mat[start:end_row] = np.flip(mat[start:end_row], axis=0)
+                #print(end_row, start, mat[start:end_row], odd)
+                odd = not odd
                 start = end_row
-            return mat
+            
+            a = np.zeros((1, 3), np.uint8)
+            mat = np.concatenate((a, mat), axis=0)
+            return mat  
 
         def add_images(self, filenames: list):
             for f in filenames:
