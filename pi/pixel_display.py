@@ -31,7 +31,7 @@ class PixelDisplay(BaseDisplay):
 
     def _convert_to_pixel_array(self, mat):
         # Convert from BGR to GRB
-        mat.transpose((2, 0, 1))
+        mat = mat.transpose((2, 0, 1))
         return mat[self._circle_mask.nonzero()]
 
     def add_images(self, filenames: list):
