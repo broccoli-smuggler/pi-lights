@@ -49,6 +49,7 @@ if platform.system() != 'Darwin':
 
             start = lengths[0] - 1
             for end_row in lengths[1:]:
+                print(start, end_row)
                 mat[start:end_row] = np.flip(mat[start:end_row, :])
                 start = end_row - 1
             return mat
