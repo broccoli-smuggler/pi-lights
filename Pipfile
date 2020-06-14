@@ -9,7 +9,6 @@ adafruit-circuitpython-neopixel = "*"
 
 [packages]
 opencv-contrib-python = "*"
-threading = "*"
 
 [requires]
 python_version = "3.7"
