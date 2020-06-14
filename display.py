@@ -1,15 +1,16 @@
 import cv2
 from itertools import cycle
 import numpy as np
-import time
 
-class OpenCVDisplay(object):
+
+class BaseDisplay(object):
     def __init__(self, radius):
         self.radius = radius
         self._animation_frames = []
         self._display_size = 200
         self._refresh_rate = 20
         self._circle_mask = self._calculate_circle_mask()
+        print("Display initialised with {} pixels".format(self.get_number_pixels()))
 
     def _calculate_circle_mask(self):
         im = np.zeros((self._display_size*2, self._display_size*2, 3), np.uint8)
@@ -19,6 +20,9 @@ class OpenCVDisplay(object):
         mat = cv2.threshold(mat, 10, 255, cv2.THRESH_BINARY)[1]
         cv2.imwrite("pixels.png", mat)
         return mat
+
+    def get_number_pixels(self):
+        return np.sum(np.count_nonzero(self._circle_mask, axis=1))
 
     def add_images(self, filenames: list):
         for f in filenames:
@@ -31,13 +35,15 @@ class OpenCVDisplay(object):
         # mat = cv2.resize(mat, (self._display_size, self._display_size), cv2.INTER_NEAREST)
         self._animation_frames.append(mat)
 
-    def load_animation(self, filename):
-        cap = cv2.VideoCapture(filename)
-        while cap.isOpened():
-            ret, frame = cap.read()
+    def display(self):
+        pass
+
+
+class OpenCVDisplay(BaseDisplay):
+    def __init__(self, radius):
+        super().__init__(radius)
 
     def display(self):
         for m in cycle(self._animation_frames):
             cv2.imshow("pixels", m)
             cv2.waitKey(int((60/self._refresh_rate) * 100))
-

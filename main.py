@@ -1,34 +1,14 @@
 # Simple test for NeoPixels on Raspberry Pi
-import time
-# import board
 
-import display
+from display import OpenCVDisplay
 
-d = display.OpenCVDisplay(8)
+d = OpenCVDisplay(8)
 
 # d.add_image("a.jpg")
 # d.add_image("wave.jpg")
 d.add_images(["1.png", "2.png", "3.png", "4.png", "3.png", "2.png"])
 d.display()
 
-
-# import neopixel
-#
-# # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
-# # NeoPixels must be connected to D10, D12, D18 or D21 to work.
-# pixel_pin = board.D18
-#
-# # The number of NeoPixels
-# num_pixels = 30
-#
-# # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
-# # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
-# ORDER = neopixel.GRB
-#
-# pixels = neopixel.NeoPixel(
-#     pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER
-# )
-#
 #
 # def wheel(pos):
 #     # Input a value 0 to 255 to get a color value.
