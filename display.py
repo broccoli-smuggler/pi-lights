@@ -28,8 +28,11 @@ class BaseDisplay(object):
         for f in filenames:
             self.add_image(f)
 
-    def add_image(self, filename):
-        mat = cv2.imread(filename)
+    def add_image(self, filename, convert=None):
+        if convert is not None:
+            mat = cv2.imread(filename, convert)
+        else:
+            mat = cv2.imread(filename)
         mat = cv2.resize(mat, (self.radius*2, self.radius*2), cv2.INTER_AREA)
         mat = cv2.bitwise_and(mat, mat, mask=self._circle_mask)
         # mat = cv2.resize(mat, (self._display_size, self._display_size), cv2.INTER_NEAREST)
