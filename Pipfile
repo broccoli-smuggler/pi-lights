@@ -8,8 +8,7 @@ rpi_ws281x  = "*"
 adafruit-circuitpython-neopixel = "*"
 
 [packages]
-opencv-python = "*"
-opencv-contrib-python = "*"
+opencv-contrib-python = "==4.1.0.25"
 
 [requires]
 python_version = "3.7"
