@@ -1,7 +1,2 @@
-sudo apt-get install libcblas-dev
-sudo apt-get install libhdf5-dev
-sudo apt-get install libhdf5-serial-dev
-sudo apt-get install libatlas-base-dev
-sudo apt-get install libjasper-dev
-sudo apt-get install libqtgui4
-sudo apt-get install libqt4-test
+pip3 install opencv-contrib-python;
+sudo apt-get install -y libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatlas-base-dev libjasper-dev libqtgui4 libqt4-test libilmbase-dev libopenexr-dev libgstreamer1.0-dev libavcodec-dev libavformat-dev libswscale-dev libwebp-dev
