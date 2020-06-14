@@ -1,4 +1,5 @@
 import platform
+import numpy as np
 
 
 def PixelDisplay():
@@ -10,7 +11,6 @@ if platform.system() != 'Darwin':
     import neopixel
     import board
     import time
-    import numpy as np
     from itertools import cycle
     import cv2
 
@@ -40,6 +40,17 @@ if platform.system() != 'Darwin':
         def _convert_to_pixel_array(self, mat):
             # Convert from BGR to GRB
             mat[:, :, [0, 1, 2]] = mat[:, :, [2, 0, 1]]
+
+            # Convert to an array of rgb
+            mat = mat[self._circle_mask.nonzero()]
+
+            # The wiring of the light switch means each row is reversed
+            lengths = self.get_row_lengths()
+
+            start = lengths[0] - 1
+            for end_row in lengths[1:]:
+                np.flip(mat[start:end_row, :, :], axis=1)
+                start = end_row
             return mat[self._circle_mask.nonzero()]
 
         def add_images(self, filenames: list):

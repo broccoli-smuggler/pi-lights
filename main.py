@@ -3,8 +3,8 @@
 from display import OpenCVDisplay
 from pi.pixel_display import PixelDisplay
 
-d = PixelDisplay(8)
-# d = OpenCVDisplay(8)
+# d = PixelDisplay(8)
+d = OpenCVDisplay(8)
 
 d.add_image("t.png")
 # d.add_image("wave.jpg")

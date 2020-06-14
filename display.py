@@ -21,8 +21,11 @@ class BaseDisplay(object):
         cv2.imwrite("pixels.png", mat)
         return mat
 
+    def get_row_lengths(self):
+        return np.count_nonzero(self._circle_mask, axis=1)
+
     def get_number_pixels(self):
-        return np.sum(np.count_nonzero(self._circle_mask, axis=1))
+        return np.sum(self.get_row_lengths())
 
     def add_images(self, filenames: list):
         for f in filenames:
