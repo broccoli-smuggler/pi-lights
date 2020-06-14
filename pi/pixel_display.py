@@ -51,7 +51,7 @@ if platform.system() != 'Darwin':
             for m in self._animation_frames:
                 pixel_arrays.append(self._convert_to_pixel_array(m))
 
-            for pixel_array in pixel_arrays:
+            for pixel_array in cycle(pixel_arrays):
                 for (i, _) in enumerate(self.pixels):
                     self.pixels[i] = tuple(pixel_array[i])
                 self.pixels.show()
