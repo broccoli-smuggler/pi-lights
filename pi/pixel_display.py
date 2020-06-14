@@ -47,8 +47,11 @@ if platform.system() != 'Darwin':
                 self.add_image(f, convert=cv2.COLOR_BGR2RGB)
 
         def display(self):
-            for m in cycle(self._animation_frames):
-                pixel_array = self._convert_to_pixel_array(m)
+            pixel_arrays = []
+            for m in self._animation_frames:
+                pixel_arrays.append(self._convert_to_pixel_array(m))
+
+            for pixel_array in pixel_arrays:
                 for (i, _) in enumerate(self.pixels):
                     self.pixels[i] = tuple(pixel_array[i])
                 self.pixels.show()
