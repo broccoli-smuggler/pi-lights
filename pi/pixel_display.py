@@ -47,10 +47,10 @@ if platform.system() != 'Darwin':
             # The wiring of the light switch means each row is reversed
             lengths = self.get_row_lengths()
 
-            start = lengths[0] - 1
+            start = lengths[0]
             for end_row in lengths[1:]:
-                print(start, end_row)
                 end_row += start
+                print(start, end_row)
                 mat[start:end_row] = np.flip(mat[start:end_row, :])
                 start = end_row
             return mat
