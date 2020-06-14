@@ -30,7 +30,6 @@ class PixelDisplay(BaseDisplay):
         time.sleep(0.5)
 
     def _convert_to_pixel_array(self, mat):
-        mat = np.swapaxes(mat, 0, 2)
         return mat[self._circle_mask.nonzero()]
 
     def add_images(self, filenames: list):
