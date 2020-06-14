@@ -16,8 +16,8 @@ if platform.system() != 'Darwin':
 
 
     class PixelDisplay(BaseDisplay):
-        def __init__(self, radius):
-            super().__init__(radius)
+        def __init__(self, diameter):
+            super().__init__(diameter)
 
             # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
             # NeoPixels must be connected to D10, D12, D18 or D21 to work.

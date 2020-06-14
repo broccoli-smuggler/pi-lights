@@ -4,8 +4,8 @@ import numpy as np
 
 
 class BaseDisplay(object):
-    def __init__(self, radius):
-        self.radius = radius
+    def __init__(self, diameter):
+        self.diameter = diameter
         self._animation_frames = []
         self._display_size = 200
         self._refresh_rate = 20
@@ -15,7 +15,7 @@ class BaseDisplay(object):
     def _calculate_circle_mask(self):
         im = np.zeros((self._display_size*2, self._display_size*2, 3), np.uint8)
         cv2.circle(im, (self._display_size, self._display_size), self._display_size, (255, 255, 255), thickness=-1)
-        mat = cv2.resize(im, (self.radius*2, self.radius*2), cv2.INTER_AREA)
+        mat = cv2.resize(im, (self.diameter, self.diameter), cv2.INTER_AREA)
         mat = cv2.cvtColor(mat, cv2.COLOR_BGR2GRAY)
         mat = cv2.threshold(mat, 10, 255, cv2.THRESH_BINARY)[1]
         cv2.imwrite("pixels.png", mat)
@@ -36,7 +36,7 @@ class BaseDisplay(object):
             mat = cv2.imread(filename, convert)
         else:
             mat = cv2.imread(filename)
-        mat = cv2.resize(mat, (self.radius*2, self.radius*2), cv2.INTER_AREA)
+        mat = cv2.resize(mat, (self.diameter, self.diameter), cv2.INTER_AREA)
         mat = cv2.bitwise_and(mat, mat, mask=self._circle_mask)
         self._animation_frames.append(mat)
 
