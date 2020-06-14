@@ -50,8 +50,9 @@ if platform.system() != 'Darwin':
             start = lengths[0] - 1
             for end_row in lengths[1:]:
                 print(start, end_row)
+                end_row += start
                 mat[start:end_row] = np.flip(mat[start:end_row, :])
-                start = end_row - 1
+                start = end_row
             return mat
 
         def add_images(self, filenames: list):
