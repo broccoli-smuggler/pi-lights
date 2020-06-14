@@ -32,4 +32,5 @@ class PixelDisplay(BaseDisplay):
             pixel_array = self._convert_to_pixel_array(m)
             ptr = self.pixels.get_pixels()
             ptr = pixel_array
+            self.pixels.show()
             time.sleep(1)
