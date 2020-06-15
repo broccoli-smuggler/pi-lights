@@ -41,6 +41,11 @@ if platform.system() != 'Darwin':
             # Convert from BGR to GRB
             mat[:, :, [0, 1, 2]] = mat[:, :, [2, 0, 1]]
 
+            # For our array we actually start with a 7 row
+            print("Adjusting circle mask for small light")
+            self._circle_mask[0,4] = 255
+            self._circle_mask[0,10] = 255
+
             # Convert to an array of rgb
             mat = mat[self._circle_mask.nonzero()]
 
@@ -53,12 +58,8 @@ if platform.system() != 'Darwin':
                 end_row += start
                 if odd:
                     mat[start:end_row] = np.flip(mat[start:end_row], axis=0)
-                #print(end_row, start, mat[start:end_row], odd)
                 odd = not odd
                 start = end_row
-            
-            a = np.zeros((1, 3), np.uint8)
-            mat = np.concatenate((a, mat), axis=0)
             return mat  
 
         def add_images(self, filenames: list):
