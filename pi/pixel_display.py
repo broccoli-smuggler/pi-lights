@@ -85,4 +85,4 @@ if platform.system() != 'Darwin':
                 for (i, _) in enumerate(self.pixels):
                     self.pixels[i] = tuple(pixel_array[i])
                 self.pixels.show()
-                time.sleep(1)
+                time.sleep(60.0/self._refresh_rate)
