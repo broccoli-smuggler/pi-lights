@@ -1,6 +1,7 @@
 import cv2
 from itertools import cycle
 import numpy as np
+import os
 
 
 class BaseDisplay(object):
@@ -26,6 +27,20 @@ class BaseDisplay(object):
 
     def get_number_pixels(self):
         return np.sum(self.get_row_lengths())
+
+    def add_dir(self, dir_name, split="_"):
+        names = []
+        if os.path.isdir(dir_name):
+            for (dirpath, _, filenames) in os.walk(dir_name):
+                names = []
+                for f in filenames:
+                    if f.endswith("png") or f.endswith(".jpg") or f.endswith(".jpeg"):
+                        order = float(f.split(split)[0])
+                        names.append((order, dirpath + "/" + f))
+                break
+        names = sorted(names)
+        names.extend(reversed(names[1:-1]))
+        self.add_images(list(list(zip(*names))[1]))
 
     def add_images(self, filenames: list):
         for f in filenames:
