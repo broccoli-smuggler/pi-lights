@@ -3,12 +3,20 @@
 from display import OpenCVDisplay
 from pi.pixel_display import PixelDisplay
 
+<<<<<<< HEAD
 # d = PixelDisplay(15)
 d = OpenCVDisplay(15)
 # d.add_dir("Sky")
 d.add_dir("broc")
 # d.add_dir("crown", ".")
 # d.add_image("t.png")
+=======
+d = PixelDisplay(15)
+# d = OpenCVDisplay(15)
+d.add_dir("Sky")
+#d.add_dir("crown", ".")
+#d.add_image("t.png")
+>>>>>>> 04362561c2877d80a35bcfe3f1af00bf1aed4910
 
 # d.add_image("wave.jpg")
 d.display()

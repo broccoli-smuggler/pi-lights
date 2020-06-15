@@ -19,7 +19,6 @@ class BaseDisplay(object):
         mat = cv2.resize(im, (self.diameter, self.diameter), cv2.INTER_AREA)
         mat = cv2.cvtColor(mat, cv2.COLOR_BGR2GRAY)
         mat = cv2.threshold(mat, 10, 255, cv2.THRESH_BINARY)[1]
-        cv2.imwrite("pixels.png", mat)
         return mat
 
     def get_row_lengths(self):
