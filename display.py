@@ -9,7 +9,7 @@ class BaseDisplay(object):
         self.diameter = diameter
         self._animation_frames = []
         self._display_size = 200
-        self._refresh_rate = 20
+        self._refresh_rate = 120.0
         self._circle_mask = self._calculate_circle_mask()
         print("Display initialised with {} pixels".format(self.get_number_pixels()))
 
@@ -65,4 +65,4 @@ class OpenCVDisplay(BaseDisplay):
     def display(self):
         for m in cycle(self._animation_frames):
             cv2.imshow("pixels", m)
-            cv2.waitKey(int((60/self._refresh_rate) * 100))
+            cv2.waitKey(int((60/fresh_rate) * 100))
