@@ -5,11 +5,11 @@ import os
 
 
 class BaseDisplay(object):
-    def __init__(self, diameter):
+    def __init__(self, diameter, refresh=120.0):
         self.diameter = diameter
         self._animation_frames = []
         self._display_size = 200
-        self._refresh_rate = 120.0
+        self._refresh_rate = refresh
         self._circle_mask = self._calculate_circle_mask()
         print("Display initialised with {} pixels".format(self.get_number_pixels()))
 

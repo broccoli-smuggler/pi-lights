@@ -3,11 +3,13 @@
 from display import OpenCVDisplay
 from pi.pixel_display import PixelDisplay
 
-d = PixelDisplay(15)
+base_dir = "/home/pi/dev/pi-lights/"
+
+d = PixelDisplay(15, refresh=230)
 #d = OpenCVDisplay(15)
 # d.add_dir("Sky")
-d.add_dir("uni")
-# d.add_dir("crown", ".")
+d.add_dir(base_dir + "uni")
+#d.add_dir(base_dir + "crown", ".")
 # d.add_image("t.png")
 
 # d.add_image("wave.jpg")
